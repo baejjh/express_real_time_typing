@@ -7,11 +7,11 @@ module.exports = function Route(app){
         console.log(req.data);
   		req.io.broadcast("new_user", {
             new_user_name: req.data.submitted_name,
-            socket_id: req.socket.id
+            new_user_session_id: req.sessionID
         });
         all_users.push({
             user_name: req.data.submitted_name,
-            socket_id: req.socket.id
+            user_session_id: req.sessionID
         });
         req.io.emit("existing_users", {
             users: all_users

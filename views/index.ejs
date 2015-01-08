@@ -13,11 +13,33 @@
 		io = io.connect();
 		if (submitted_name != null) {
 			//user input stored in 'name'
-			io.emit('got_a_new_user', {
-				name: submitted_name
+			io.emit("got_a_new_user", {
+				name: submitted_name,
+				sessionID: sessionID
+			});
+			io.on("new_user", function(data){
+				$("#entertain_user").append("
+					<div class='my_box "+data.new_user_session_id+"'>
+						<div class='my_box_name'>" + data.new_user_name + "</div>
+						<textarea class='my_box_content "+data.new_user_session_id+"'></textarea>
+					</div>"
+				);
 			});
 		}
+
+		io.on("existing_users", function(data){
+			for(i = 0; i < data.users.length - 1; i++){
+				console.log(data.users[i].user_session_id);
+				$("#entertain_user").append("
+					<div class='my_box "+data.users[i].user_session_id+"'>
+						<div class='my_box_name'>" + data.users[i].user_name + "</div>
+						<textarea class='my_box_content"+data.users[i].user_session_id+"'></textarea>
+					</div>"
+				);
+			}
+		});
 	});
+	</script>​
 ​</head>​
 ​<body>​
 	<div id="entertain_user">​
