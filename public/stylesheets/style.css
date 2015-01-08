@@ -1,0 +1,23 @@
+body
+{
+  	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  	text-align: center;
+}
+.my_box {
+	width: 20%;
+	min-height: 200px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.my_box_name {
+	outline: 1px solid;
+	background-color: whitesmoke;
+	padding: 10px;
+}
+
+.my_box_content {
+	min-height: 170px;
+	outline: 1px solid;
+	padding: 10px;
+}
